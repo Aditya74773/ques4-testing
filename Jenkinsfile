@@ -7,11 +7,22 @@ pipeline {
 
     stages {
 
+        stage('Check Python') {
+            steps {
+                bat '''
+                    echo Checking Python installation...
+                    where python
+                    python --version
+                    python -m pip --version
+                '''
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 bat '''
                     echo Installing Python dependencies...
-                    pip install -r requirements.txt
+                    python -m pip install -r requirements.txt
                 '''
             }
         }
@@ -20,7 +31,7 @@ pipeline {
             steps {
                 bat '''
                     echo Running Q4 test suite...
-                    pytest -v --junitxml=junit.xml --html=report.html --self-contained-html
+                    python -m pytest -v --junitxml=junit.xml --html=report.html --self-contained-html
                 '''
             }
         }
