@@ -11,9 +11,8 @@ pipeline {
             steps {
                 bat '''
                     echo Checking Python installation...
-                    where python
-                    python --version
-                    python -m pip --version
+                    "C:\\Users\\Aditya kumar\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" --version
+                    "C:\\Users\\Aditya kumar\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m pip --version
                 '''
             }
         }
@@ -22,7 +21,7 @@ pipeline {
             steps {
                 bat '''
                     echo Installing Python dependencies...
-                    python -m pip install -r requirements.txt
+                    "C:\\Users\\Aditya kumar\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m pip install -r requirements.txt
                 '''
             }
         }
@@ -31,7 +30,7 @@ pipeline {
             steps {
                 bat '''
                     echo Running Q4 test suite...
-                    python -m pytest -v --junitxml=junit.xml --html=report.html --self-contained-html
+                    "C:\\Users\\Aditya kumar\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m pytest -v --junitxml=junit.xml --html=report.html --self-contained-html
                 '''
             }
         }
